@@ -1,0 +1,8 @@
+development:
+  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
+
+test:
+  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
+
+production:
+  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>

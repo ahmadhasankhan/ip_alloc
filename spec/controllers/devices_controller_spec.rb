@@ -29,7 +29,6 @@ RSpec.describe DevicesController, type: :controller do
   describe "POST #assign" do
     ip_address = '1.2.3.4'
     device_name = 'device123'
-
     expected = {:ip => ip_address, :device => device_name}.to_json
 
     #TODO: Clean up the codes
@@ -49,6 +48,4 @@ RSpec.describe DevicesController, type: :controller do
       it 're-renders #new form'
     end
   end
-
-
 end
