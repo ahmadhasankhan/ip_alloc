@@ -1,29 +1,103 @@
 # ip_alloc
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : 2.3.0
 
-* System dependencies
+* Rails version : 4.2.7.1
 
-* Configuration
+* System dependencies : Bundler version 1.12.5
 
-* Database creation
+* Configuration :
 
-* Database initialization
+* Database creation : N/A
 
-* How to run the test suite
+* How to run the test suite : $ rspec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Services : {host}/devices/1.2.3.5 and {host}/devices/assign
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Run Application Locally
 
+You don't need to do any configuration just make sure that `IPALLOC_DATAPATH` environment variable is set with data file path
+
+Exact the zip file and go to the root of the project.
+
+Run the bundle command to install all the gem dependencies.
+
+```console
+$ bundle install
+```
+
+Next, you need to run the rails server:
+
+$ rails server -p 8080
+
+## APIs
+
+### /devices/{address}
+
+GET
+{host}/devices/{ip}
+
+Response:
+
+- If record found
+
+Status code : 200
+
+```ruby
+{
+  "error": "NotFound",
+  "ip": "1.2.3.4"
+}
+```
+
+- If record not found
+
+Status code : 404
+
+```ruby
+{
+  "error": "NotFound",
+  "ip": "1.2.3.4"
+}
+```
+
+
+### /addresses/assign
+
+POST
+{host}/devices/assign
+
+Request Body:
+
+```ruby
+  {"ip":"1.2.3.4", "device":"device1"}
+```
+
+Response:
+Status code: 201
+```ruby
+{
+  "ip": "1.2.3.1",
+  "device": "device1"
+}
+```
+
+In case of bad request:
+Request:
+
+```ruby
+  {"ip":"1.2.256.1", "device":"device1"}
+```
+
+Response:
+Status code: 400
+```ruby
+{
+  "error": "Invalid IPv4",
+  "ip": "1.2.256.1"
+}
+
+```
