@@ -1,9 +1,6 @@
 development:
   data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
 
-  #Uncomment and set the file path if environment is not set
-  #data_store_file: data.txt
-
 test:
   data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
 

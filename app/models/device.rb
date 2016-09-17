@@ -14,7 +14,7 @@ class Device
   end
 
   def self.find_by_ip(ip)
-    file_name = APP_CONFIG['data_store_file']
+    file_name = DATA_FILE_PATH
     if file_name
       File.open(file_name) do |file|
         file.each_line do |line|
@@ -26,7 +26,7 @@ class Device
         end
       end
     else
-      raise "File path not available"
+      raise "File path not available : #{file_name}"
     end
     nil
   end
@@ -37,7 +37,7 @@ class Device
   end
 
   def self.is_ip_available?(ip)
-    file_name = APP_CONFIG['data_store_file']
+    file_name = DATA_FILE_PATH
     File.open(file_name) do |file|
       file.each_line do |line|
         line.chomp!
@@ -58,7 +58,7 @@ class Device
   end
 
   def self.persist_data(ip, name)
-    file_name = APP_CONFIG['data_store_file']
+    file_name = DATA_FILE_PATH
     #TODO: Remove the hardcoded ip_block
     ip_block = "1.2.0.0/16"
     status = false
