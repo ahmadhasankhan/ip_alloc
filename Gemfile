@@ -52,3 +52,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'netaddr', '~> 1.5', '>= 1.5.1'
+

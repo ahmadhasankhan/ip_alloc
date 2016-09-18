@@ -51,19 +51,19 @@ class Device
   end
 
   def self.valid_v4?(addr)
-    if /\A(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\Z/ =~ addr
-      return $~.captures.all? { |i| i.to_i < 256 }
+    unless IP_RANGE
+      raise "Something went wrong with IP_RANGE : #{IP_RANGE}"
     end
-    return false
+
+    IP_RANGE.contains?(addr)
   end
 
   def self.persist_data(ip, name)
-    file_name = DATA_FILE_PATH
-    #TODO: Remove the hardcoded ip_block
-    ip_block = "1.2.0.0/16"
+    #Reading ip_block from config
+    ip_block = APP_CONFIG['ip_block']
     status = false
     begin
-      file = File.open(file_name, "a+") { |f| f.puts("#{ip_block},#{ip},#{name}") }
+      file = File.open(DATA_FILE_PATH, "a+") { |f| f.puts("#{ip_block},#{ip},#{name}") }
       status = true
     ensure
       file.close if file

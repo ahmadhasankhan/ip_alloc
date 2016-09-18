@@ -87,6 +87,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    netaddr (1.5.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -187,6 +188,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.5.0)
   jbuilder (~> 2.0)
   jquery-rails
+  netaddr (~> 1.5, >= 1.5.1)
   rails (= 4.2.7.1)
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
