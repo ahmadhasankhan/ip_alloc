@@ -1,11 +1,8 @@
 development:
-  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
   ip_block: 1.2.0.0/16
 
 test:
-  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
   ip_block: 1.2.0.0/16
 
 production:
-  data_store_file: <%= ENV["IPALLOC_DATAPATH"] %>
   ip_block: 1.2.0.0/16
